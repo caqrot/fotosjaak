@@ -36,19 +36,19 @@
                         while ($row = mysql_fetch_array($result))
                         {
                                 //Maak een nieuw LoginClass-object aan per while ronde        
-                                $object = LoginClass();
+                                $object = new LoginClass();
                                 
                                 //Vul de velden van het LoginClass-object met de gevonden record-
                                 //waarden uit de tabel
-                                $this->login_id        = $row['login_id'];
-                                $this->email        = $row['email'];
-                                $this->password        = $row['password'];
-                                $this->userrole = $row['userrole'];
-                                $this->isactivated        = $row['isactivated'];
-                                $this->registerdate        = $row['registerdate'];
+                                $object->login_id           = $row['login_id'];
+                                $object->email              = $row['email'];
+                                $object->password           = $row['password'];
+                                $object->userrole 			= $row['userrole'];
+                                $object->isactivated        = $row['isactivated'];
+                                $object->registerdate       = $row['registerdate'];
                                 
-                                
-                        }
+                                $object_array[]= $object;
+                        };
                         
                         
                 }

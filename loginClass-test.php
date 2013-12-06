@@ -10,6 +10,7 @@ Dit is de LoginClass-test pagina </h3>
 	
 	foreach ($result as $value)
 	{
-		echo $value->id."<br>";
+		echo $value->login_id."<br>";
+			 $value->email."<br>";
 	}
 ?>
