@@ -33,5 +33,14 @@
 	
 	//Maak nu een object (instantie) van de MySqlDatabaseClass
 	$database = new MySqlDatabaseClass();
+	echo "Dit is de testpagina voor mijn database class";
+	
+	// We gaan alle records uit de tabel faw selecteren
+	
+	$query = "SELECT * FROM `faq`";
+	$database->fire_query($query);
+	while ($row = mysql_fetch_array($result))
+	{
+		echo $row['answer_dutch']."<br>";
+	}
 ?>
-fghf
