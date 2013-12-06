@@ -3,10 +3,10 @@
         <li>
                 <a href='./index.php?content=homepage'>homepage</a>
         </li>
-         <li>
-                <a href='./index.php?content=loginClassTest'>loginClass-test</a>
+        <li>
+                <a href='./index.php?content=loginClass-Test'>loginClass-test</a>
         </li>
-		
+        
         <?php
                 if (isset($_SESSION['userrole']))
                 {
@@ -18,10 +18,6 @@
                                                   </li>
                                                   <li>
                                                         <a href='./index.php?content=faqpage'>FAQ game</a>
-													</li>
-													<li>
-														<a href='./index.php?content=leegepagina'>pagina</a>
-												
                                                   </li>";
                                 break;
                                 case 'root':

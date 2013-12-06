@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>
-			Mijn eerste site
-		</title>
-	</head>
-	<body>
-		<h3>Registratie pagina</h3>
-	<form action="./index.php?content=register" method="post">
-        <table border='0'>
+<form action="./index.php?content=register" method="post">
+        <table border='1'>
                 <caption>Registratiepagina</caption>
                 <tr>
                         <th>Vul hier uw gegevens in</th>

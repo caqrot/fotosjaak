@@ -45,4 +45,3 @@
                   de homepage";        
         header("refresh:4; url=index.php?content=homepage");        
 ?>
-	

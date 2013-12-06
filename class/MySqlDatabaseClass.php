@@ -11,7 +11,7 @@
 		
 		
 		//Contructor in PHP heeft altijd dezelfde naam_construct
-		public function _construct()
+		public function __construct()
 		{
 			// Maakt conact met de mysql-server
 			$this->db_connection = mysql_connect(SERVERNAME, USERNAME, PASSWORD);
@@ -24,23 +24,14 @@
 		//op de database. Het resultaat wordt dan teruggeven door de method
 		public function fire_query($query)
 		{
+			//echo $query;exit();	
 			// Stuurt de query die meegegeven is als argument van de functie fire_query
 			$result = mysql_query($query, $this->db_connection)
-				or die('MySqlDatabaseClass: '.mysql_error());
+				or die('MySqlDatabaseClass: ty'.mysql_error());
 			return $result;
 		}
 	}
 	
 	//Maak nu een object (instantie) van de MySqlDatabaseClass
 	$database = new MySqlDatabaseClass();
-	echo "Dit is de testpagina voor mijn database class";
-	
-	// We gaan alle records uit de tabel faw selecteren
-	
-	$query = "SELECT * FROM `faq`";
-	$database->fire_query($query);
-	while ($row = mysql_fetch_array($result))
-	{
-		echo $row['answer_dutch']."<br>";
-	}
 ?>

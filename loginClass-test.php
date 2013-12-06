@@ -1,16 +1,18 @@
-Dit is de LoginClass-test pagina </h3>
+<h3>Dit is de LoginClass-test pagina</h3><hr>
 <?php
-	//voeg het bestand loginclass.php in require_once("LoginClass.php");
-
-	$login = new LoginClass();
-	
-	$query = "SELECT * FROM `login`";
-	
-	$result = $login->find_by_sql($query);
-	
-	foreach ($result as $value)
-	{
-		echo $value->login_id."<br>";
-			 $value->email."<br>";
-	}
+        //Voeg het bestand LoginClass.php in
+        require_once("class/LoginClass.php");
+                
+        $result = LoginClass::find_all_records();
+        
+        
+        foreach ($result as $value)
+        {
+                echo $value->getLogin_id()." | ".
+                         $value->getEmail()." | ".
+                         $value->getPassword()." | ".
+                         $value->getUserrole()." | ".
+                         $value->getIsactivated()." | ".
+                         $value->getRegisterdate()."<br>";                
+        }
 ?>
