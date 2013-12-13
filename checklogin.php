@@ -13,10 +13,13 @@
                  * met: de naam van de class gevolgd door dan een
                  * dubbele dubbele punt gevold door de naam van de method.
                  */
+                 
                 if (LoginClass::check_if_email_password_exists($_POST['email'],
                                                                                                            $_POST['password']))
                 {
-                        /* Vind de logingegevens van de user die inlogt. Je krijgt
+                       
+						 /* 
+						 *//* Vind de logingegevens van de user die inlogt. Je krijgt
                          * een loginClass object terug. En je kan dus de properties
                          * getLogin() en getUserrole() opvragen.                 * 
                          */        
@@ -25,7 +28,7 @@
                         
                         $_SESSION['id']                        = $user->getLogin_id();
                         $_SESSION['userrole']        = $user->getUserrole();
-                                                
+                                              
                         switch ($_SESSION['userrole'])
                         {
                                 case 'customer':

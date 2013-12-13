@@ -54,7 +54,7 @@
                                 $object->password                = $row['password'];
                                 $object->userrole                 = $row['userrole'];
                                 $object->isactivated        = $row['isactivated'];
-                                $object->registerdate        = $row['registerdate'];
+                                $object->registerdate        = $row['register_date'];
                                 
                                 //Stop het $object gemaakt van de LoginClass
                                 //in het objectarray genaamd
