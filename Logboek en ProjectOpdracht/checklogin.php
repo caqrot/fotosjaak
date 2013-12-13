@@ -43,9 +43,12 @@
                                         header("location:index.php?content=admin_homepage");
                                         break;
                                 case 'root':
-                                        header("location:index.php?content=root_homepage");
+                                        header("location :index.php?content=root_homepage");
+                                        break;      
+								case 'developer':
+                                        header("location:index.php?content=developer_homepage");
                                         break;                        
-                        }                
+                        }            
                 }
                 else
                 {
