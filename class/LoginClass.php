@@ -54,7 +54,7 @@
                                 $object->password                = $row['password'];
                                 $object->userrole                 = $row['userrole'];
                                 $object->isactivated        = $row['isactivated'];
-                                $object->registerdate        = $row['register_date'];
+                                $object->register_date        = $row['register_date'];
                                 
                                 //Stop het $object gemaakt van de LoginClass
                                 //in het objectarray genaamd
@@ -122,6 +122,70 @@
                          */
                         $record_array = self::find_by_sql($query);
                         return array_shift($record_array);
+                }
+                
+                public static function check_if_account_is_activated($email,
+                                                                                                                           $password)
+                {
+                        $query = "SELECT        *
+                                          FROM                `login`
+                                          WHERE                `email`                =        '".$email."'
+                                          AND                `password`        =        '".$password."'";
+                        
+                        $user_array = self::find_by_sql($query);
+                        $user = array_shift($user_array);
+                        if ($user->getIsactivated() == 'yes')
+                        {
+                                return true;
+                        }
+                        else 
+                        {
+                                return false;
+                        }                        
+                }
+                
+                public static function check_if_emailaddress_exists($email)
+                {
+                        global $database;
+                                                        
+                        $query = "SELECT `email`
+                                          FROM         `login`
+                                          WHERE         `email` = '".$email."'";
+                                          
+                        $result = $database->fire_query($query);
+                        if ( mysql_num_rows($result) > 0)
+                        {
+                                return true;                                
+                        }
+                        else
+                        {
+                                return false;
+                        }                        
+                }
+                
+                public static function insert_into_loginClass($email)
+                {
+                        global $database;
+                        
+                        $date = date("Y");
+                        
+                        $query = "INSERT INTO `login` (`login_id`,
+                                                                                   `email`,
+                                                                                   `password`,
+                                                                                   `userrole`,
+                                                                                   `isactivated`,
+                                                                                   `register_date`)
+                                          VALUES                          (Null,
+                                                                                     '".$email."',
+                                                                                     '',
+                                                                                     '',
+                                                                                     '',
+                                                                                     
+                                          
+                                          
+                                          )";
+                        
+                        
                 }
 }
 ?>
