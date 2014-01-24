@@ -28,10 +28,7 @@
                 }
                 
                 // Method logout
-                public function logout()
-                
-                
-                
+                public function logout()          
                 {
                         session_destroy();
                         $this->logged_in = false;

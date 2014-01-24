@@ -3,7 +3,6 @@
         <li>
                 <a href='./index.php?content=homepage'>homepage</a>
         </li>
-        
         <?php
                 if (isset($_SESSION['userrole']))
                 {

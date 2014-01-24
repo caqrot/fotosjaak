@@ -1,4 +1,13 @@
-<form action="./index.php?content=register" method="post">
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Mijn eerste site
+		</title>
+	</head>
+	<body>
+		<h3>Registratie pagina</h3>
+	<form action="./index.php?content=register" method="post">
         <table border='1'>
                 <caption>Registratiepagina</caption>
                 <tr>
@@ -77,7 +86,6 @@
                                 <input type="text" name="mobilephonenumber" required />
                         </td>
                 </tr>
-                
                 <tr>
                         <td>
                                 <input type="submit" name="submit" value="verstuur" />

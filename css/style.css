@@ -48,7 +48,7 @@ div#content
 
 div#footer
 {
-	background-color: Grey;
+	background-color: RGB(200,200,200);
 	text-align:center;
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
