@@ -54,7 +54,7 @@
                                 $object->password                = $row['password'];
                                 $object->userrole                 = $row['userrole'];
                                 $object->isactivated        = $row['isactivated'];
-                                $object->register_date        = $row['register_date'];
+                                $object->registerdate        = $row['registerdate'];
                                 
                                 //Stop het $object gemaakt van de LoginClass
                                 //in het objectarray genaamd
@@ -169,59 +169,46 @@
                         
                         $date = date("Y-m-d H:i:s");
                         $temp_password = MD5($email.$date);
-						
-                        $query = "INSERT INTO `login` (							   `login_id`,
+                                                
+                        $query = "INSERT INTO `login` (`login_id`,
                                                                                    `email`,
                                                                                    `password`,
                                                                                    `userrole`,
                                                                                    `isactivated`,
-                                                                                   `register_date`)
+                                                                                   `registerdate`)
                                           VALUES                          (Null,
                                                                                      '".$email."',
                                                                                      '".$temp_password."',
                                                                                      'customer',
-                                                                                     ''no,
+                                                                                     'no',
                                                                                      '".$date."')";
-                                                                                     
-               //echo $query; exit();                           
-               $database->fire_query($query);
-               
-               echo mysql_insert_id(); exit();
+                    //echo $query; exit();
+                        $database->fire_query($query);
+                        
+                        $id = mysql_insert_id();        
                         
                         $query = "INSERT INTO `user` (`user_id`,
-													  `firstname`,
-													  `infix`,
-													  `surname`,
-													  `adress`,
-													   `adressnumber`,
-													   `city`,
-													   `zipcode`,
-													   `country`,
-													   `phonenumber`,
-													   `mobilephonenumber`)
-										VALUES		  ('".$id."',
-													   '".$_POST['firstname']."',
-													   '".$_POST['infix']."',
-													   '".$_POTS['surname']."',
-													   '".$_POST['adress']."',
-													   '".$_POST['adressnumber']."',
-													   '".$_POST['city']."',
-													   '".$_POST['zipcode']."',
-													   '".$_POST['country']."',
-													   '".$_POST['phonenumber']."',
-													   '".$_POST['mobilephonenumber']."',
-													   
-'".$_POST['mobilephonenumber']."')";
-		$database->fire_query($query);
-		self::send_activation_email($firstname, $infix, $surname, $email, $password)
-		}
-		private static function send_activation_email($firstname,
-													  $infix,
-													  $surname,
-													  $email,
-													  $password)
-		{
-			//code om het mailtje te sturen	
-		}
+                                                                                  `firstname`,
+                                                                                  `infix`,
+                                                                                  `surname`,
+                                                                                  `address`,
+                                                                                  `addressnumber`,
+                                                                                  `city`,
+                                                                                  `zipcode`,
+                                                                                  `country`,
+                                                                                  `phonenumber`,
+                                                                                  `mobilephonenumber`)
+                                          VALUES                         ('".$id."',
+                                                                                    '".$_POST['firstname']."',
+                                                                                    '".$_POST['infix']."',
+                                                                                    '".$_POST['surname']."',
+                                                                                    '".$_POST['address']."',
+                                                                                    '".$_POST['addressnumber']."',
+                                                                                    '".$_POST['city']."',
+                                                                                  '".$_POST['zipcode']."',
+                                                                                  '".$_POST['country']."',
+                                                                                  '".$_POST['phonenumber']."'
+                                                                                  '".$_POST['mobilephonenumber']."')";                
+                }
 }
 ?>
