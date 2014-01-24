@@ -185,7 +185,43 @@
                                                                                      
                //echo $query; exit();                           
                $database->fire_query($query);
+               
+               echo mysql_insert_id(); exit();
                         
-              }
+                        $query = "INSERT INTO `user` (`user_id`,
+													  `firstname`,
+													  `infix`,
+													  `surname`,
+													  `adress`,
+													   `adressnumber`,
+													   `city`,
+													   `zipcode`,
+													   `country`,
+													   `phonenumber`,
+													   `mobilephonenumber`)
+										VALUES		  ('".$id."',
+													   '".$_POST['firstname']."',
+													   '".$_POST['infix']."',
+													   '".$_POTS['surname']."',
+													   '".$_POST['adress']."',
+													   '".$_POST['adressnumber']."',
+													   '".$_POST['city']."',
+													   '".$_POST['zipcode']."',
+													   '".$_POST['country']."',
+													   '".$_POST['phonenumber']."',
+													   '".$_POST['mobilephonenumber']."',
+													   
+'".$_POST['mobilephonenumber']."')";
+		$database->fire_query($query);
+		self::send_activation_email($firstname, $infix, $surname, $email, $password)
+		}
+		private static function send_activation_email($firstname,
+													  $infix,
+													  $surname,
+													  $email,
+													  $password)
+		{
+			//code om het mailtje te sturen	
+		}
 }
 ?>
