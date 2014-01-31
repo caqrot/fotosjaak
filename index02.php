@@ -1,3 +1,5 @@
+//Iets voor blok 1
+
 <!DOCTYPE html>
 <html>
 	<head>
