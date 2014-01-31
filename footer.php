@@ -1,1 +1,1 @@
-			contact | disclaimer | copyright | tools | privacybeleid | adverteren
+contact | disclaimer | copyright | tools | privacybeleid | Adverteren
