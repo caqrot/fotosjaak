@@ -1,3 +1,5 @@
+//bij loginclass word er ook een mailtje gestuurd
+
 <?php
 	require_once('MySqlDatabaseClass.php');
 	
