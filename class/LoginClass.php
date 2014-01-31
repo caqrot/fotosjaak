@@ -246,7 +246,7 @@
 			$message2 = "<u><b>Geachte heer/mevrouw".$surname."</u><br><br>";
 			$message2 .= "Nog bedankt voor het registeren<br>";
 			$message2 .= "Met vriendelijke groet, Fotosjaak <br>";
-			
+					
 			$headers = "Reply-To: info@fotosjaak.nl\r\n";
 			$headers .= "From: sjaakdevries@fotosjaak.nl\r\n";
 			$headers .= "Cc: info@fotosjaak.nl\r\n";
@@ -256,7 +256,8 @@
 			//$headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
 			$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
 			
-			mail($to, $subject, $message, $headers);			
+			mail($to, $subject, $message, $headers);		
+			mail($to, $subject, $message2, $headers);		
 		}
 
 		public static function update_password_in_login($email, $password)
