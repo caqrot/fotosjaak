@@ -1,3 +1,5 @@
+
+// zoals de naam zegt dit is de developer homepage
 <?php
 	$userrole = array('root', 'developer');
 	include("security.php");
