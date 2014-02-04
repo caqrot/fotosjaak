@@ -1,4 +1,3 @@
-//Bij link.php kan ik nieuwe links toevoegen
 
 <ul>
 	<!--Plaats hier de links die iedereen mag gebruiken en zien-->

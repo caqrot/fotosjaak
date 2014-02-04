@@ -154,5 +154,29 @@
 				  WHERE order_id = '".$order_id."'";
 		$database->fire_query($query);
 	}
+	public static function find_orders_users()
+	{
+			global $database;
+			// Maak een select query
+			$query = "SELECT * FROM `order`";
+			
+			// Vuur de query af op de database
+			$result = $database->fire_query($query);
+			
+			while ($rows = mysql_fetch_array($result))
+			{
+				echo "<tr>
+							<td>".$rows['order_id']."</td>
+							<td>".$rows['order_short']."</td>
+							<td>".$rows['deliverydate']."</td>
+							<td><a href=''>up</a></td>
+							</tr>";
+			}
+			
+			
+						
+			
+		
+	}
  }
 ?>
