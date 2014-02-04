@@ -1,55 +1,60 @@
-
 <ul>
-	<!--Plaats hier de links die iedereen mag gebruiken en zien-->
 	<li>
-		<a href='./index.php?content=homepage'>homepage</a>
+		<a href="index.php?content=homepage">home</a>
 	</li>
-	
-	<?php
+	<?php 
 		if (isset($_SESSION['userrole']))
 		{
+			echo "<li>
+					<a href='index.php?content=logout'>uitloggen</a>
+				  </li>";
 			switch ($_SESSION['userrole'])
 			{
 				case 'customer':
 					echo "<li>
-							<a href='./index.php?content=download'>download game</a>
-						  </li>
-						  <li>
-							<a href='./index.php?content=faqpage'>FAQ game</a>
+							<a href='index.php?content=downloadpage'>downloads</a>					
 						  </li>";
+						  echo "<li>
+							<a href='index.php?content=customer_homepage'>user home</a>					
+						  </li>"; 
+						  echo "<li>
+							<a href='index.php?content=faqpage'>faq</a>				
+						  </li>";
+						  echo "<li>
+						  			<a href='index.php?content=opdracht'>
+						  				opdracht
+						  			</a>
+						  		</li>"; 
 				break;
-				case 'coworker':
+				case 'administrator':
 					echo "<li>
-							<a href='./index.php?content=coworker'>coworker</a>
+							<a href=''>admin-link</a>
 						  </li>";
 				break;
-				
-				
 				case 'root':
-					//Plaats hier de speciale links voor de root.
+					echo "<li>
+							<a href='index.php?content=developer_homepage'>dev-home</a>
+						  </li>";
+				case 'developer':
+					echo "<li>
+							<a href=''>dev-link</a>
+						  </li>";
 				break;
-				case 'admin':
-					//Plaats hier de speciale links voor de admin.
-				break;
-				default:
-				break;
-			}		
-			echo "<li>
-					<a href='./index.php?content=".
-							$_SESSION["userrole"]."_homepage'>eigen homepage</a>
-				  </li>
-				  <li>
-					<a href='./index.php?content=logout'>uitloggen</a>
-				  </li>";
+				case 'photographer':
+					echo "<li>
+							<a href='index.php?content=upload'>upload</a>
+						  </li>";
+				break;				
+			}
 		}
 		else
 		{
 			echo "<li>
-					<a href='./index.php?content=register_form'>registratie</a>
+					<a href='index.php?content=login_form'>inloggen</a>
 				  </li>
 				  <li>
-					<a href='./index.php?content=login'>log in</a>
+					<a href='index.php?content=register_form'>registratie</a>
 				  </li>";
 		}
-	?>
+	?>	
 </ul>
