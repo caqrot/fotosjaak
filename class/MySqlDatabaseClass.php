@@ -18,7 +18,7 @@
 												 USERNAME,
 												 PASSWORD);
 			// Er wordt hier een database geselecteerd								 
-			mysql_select_db(DATABASE, $this->db_connection) or 
+			mysql_select_db(DATABASENAME, $this->db_connection) or 
 				die('MySqlDatabaseClass, database niet geselecteerd');
 		}
 

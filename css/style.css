@@ -13,17 +13,17 @@ body
 	font-size:1.0em;
 	border:0px solid red;
 	margin:10px;
-	background-color:grey;
+	background-color:solid green;
 }
 
 html
 {
-	border:0px solid green;
+	border:0px white;
 }
 
 div#container
 {
-	background-color:grey;
+	background-color:green;
 	width:745px;
 	margin:20px auto;	
 	border-radius:25px;
@@ -31,8 +31,8 @@ div#container
 
 div#banner
 {	
-	background-color:orange;
-	background-image:url(../images/pony.jpg);
+	background-color:(180, 180, 1800);
+	background-image:url(../images/slothbanner.png);
 	background-repeat:no-repeat;
 	height:170px;
 	border-radius:25px;
@@ -50,7 +50,7 @@ div#content
 
 div#footer
 {
-	background-color:orange;
+	background-color:solid white;
 	text-align:center;
 }
 
@@ -59,7 +59,7 @@ div#link
 	position:absolute;
 	top:0px;
 	left:-120px;
-	background-color:grey;
+	background-color:green;
 	width:170;
 	height:200px;
 	border-radius:25px;

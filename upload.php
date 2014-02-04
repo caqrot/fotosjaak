@@ -6,10 +6,14 @@
 <h3>Uploadformulier voor uw foto's</h3>
 <table>
 	<tr>
-		<th>ordernr</th>
+		<th>id</th>
+		<th>voornaam</th>
+		<th>tv</th>
+		<th>Achternaam</th>
+		<th>order id</th>
 		<th>opdracht</th>
-		<th>datum</th>
-		<th>upload</th>
+		<th>datum gereed</th>
+		<th>up</th>
 	</tr>	
 	<?php OrderClass::find_orders_users(); ?>	
 </table>
