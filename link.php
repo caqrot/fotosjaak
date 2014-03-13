@@ -22,7 +22,12 @@
 						  </li>";
 						  echo "<li>
 						  			<a href='index.php?content=opdracht'>
-						  				opdracht
+						  				plaats opdracht
+						  			</a>
+						  		</li>"; 
+						  echo "<li>
+						  			<a href='index.php?content=bekijk_opdracht'>
+						  				bekijk opdrachten
 						  			</a>
 						  		</li>"; 
 				break;
@@ -37,7 +42,16 @@
 						  </li>";
 				case 'developer':
 					echo "<li>
-							<a href=''>dev-link</a>
+							<a href='index.php?content=developerzone/selectors'>selectors</a>
+						  </li>";
+					echo "<li>
+							<a href='index.php?content=developerzone/filters'>filters</a>
+						  </li>";
+					echo "<li>
+							<a href='index.php?content=developerzone/image-attributes'>image-attributes</a>
+						  </li>";
+				    echo "<li>
+							<a href='index.php?content=developerzone/textinsertion'>textinsertion</a>
 						  </li>";
 				break;
 				case 'photographer':

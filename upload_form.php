@@ -1,11 +1,22 @@
 <?php 
 	$userrole = array('root', 'photographer');
-	include("security.php"); 
+	include("security.php");
+
+	// Voeg deze class toe zodat we gegevens kunnen wegschrijven naar
+	// de photo tabel.
+	require_once 'class/PhotoClass.php'; 
 
 	if (isset($_POST['submit']))
 	{
+		$mime_type_array = array('mime/jpeg', 'mime/png', 'mime/gif');
+
+		if ( in_array($_FILES['photo']['type'], $mime_type_array))
+		{
+
+		// Definieer een pad waar de foto's worden opgeslagen	
 		$dir = "fotos/".$_POST['user_id']."/".$_POST['order_id']."/";
-		//echo $dir; exit();
+
+		// Bestaat deze directory al, zo nee, maak de directory
 		if (!file_exists($dir))
 		{	
 			mkdir($dir, 0777, true);
@@ -58,7 +69,7 @@
 		else 
 		{
 			// Definieer de nieuwe thumbnailhoogt in geval van portrait	
-			$tn_heigth = THUMB_SIZE;
+			$tn_height = THUMB_SIZE;
 			// Definieer de nieuwe thumbnailbreedte in geval van portrait
 			$tn_width =	THUMB_SIZE * $ratio_image;
 		}
@@ -68,35 +79,87 @@
 		// plakken.		
 		$thumbnail = imagecreatetruecolor($tn_width, $tn_height);
 
-		// We maken nu het fotootje van dezelfde afmetingen tn_width x
-		// tn_height zodat we dit op het zwarte stukje karton kunnen
-		// plakken.
-		$source = imagecreatefromjpeg($path_photo);
+		// Onderzoek wat de extentie is van de file
+		switch( $_FILES['photo']['type'])
+		{
+			case 'image/jpeg':
+				// We maken nu het fotootje van dezelfde 
+				// afmetingen tn_width x
+				// tn_height zodat we dit op het zwarte stukje karton kunnen
+				// plakken.
+				$source = imagecreatefromjpeg($path_photo);
 
-		// We gaan nu het kleine thumbnail fotootje plakken op het 
-		// zwarte stuk karton met imagecopyresampled
-		imagecopyresampled($thumbnail,
-						   $source,
-						   0,
-						   0,
-						   0,
-						   0,
-						   $tn_width,
-						   $tn_height,
-						   $specs_image[0],
-						   $specs_image[1]);
+				// We gaan nu het kleine thumbnail fotootje 
+				// plakken op het zwarte stuk karton met
+				// imagecopyresampled
+				imagecopyresampled($thumbnail,
+								   $source,
+								   0,
+								   0,
+								   0,
+								   0,
+								   $tn_width,
+								   $tn_height,
+								   $specs_image[0],
+								   $specs_image[1]);
 
-		imagejpeg($thumbnail, $path_thumbnail_photo, 100);
+				// Sla het plaatje op in een file
+				imagejpeg($thumbnail, $path_thumbnail_photo, 100);	
+				break;
+			case 'image/png':
+				$source = imagecreatefrompng($path_photo);
 
+				imagecopyresampled($thumbnail,
+								   $source,
+								   0,
+								   0,
+								   0,
+								   0,
+								   $tn_width,
+								   $tn_height,
+								   $specs_image[0],
+								   $specs_image[1]);
 
-		var_dump($specs_image);
-		echo $ratio_image;exit();
+				imagepng($thumbnail, $path_thumbnail_photo, 9);
+				break;
+			case 'image/gif':
+				$source = imagecreatefromgif($path_photo);
 
+				imagecopyresampled($thumbnail,
+								   $source,
+								   0,
+								   0,
+								   0,
+								   0,
+								   $tn_width,
+								   $tn_height,
+								   $specs_image[0],
+								   $specs_image[1]);
 
+				imagegif($thumbnail, $path_thumbnail_photo);
+				break;				
+		}		
 
+		PhotoClass::insert_into_photo($_POST['order_id'],
+									  $_FILES['photo']['name'],
+									  $_POST['description']);
 
+		// Succesmelding voor het uploaden van de foto
+		echo "Het uploaden van de foto met de naam: <strong>".
+		      $_FILES['photo']['name']."</strong><br>is gelukt. U wordt 
+		      		doorgestuurd naar de uploadpagina.";
+		header("refresh:4;url=index.php?content=upload_form&user_id=".$_POST['user_id']."&order_id=".$_POST['order_id']);
 
-		echo $path_thumbnail_photo;exit();
+		}
+		echo "U probeert een bestand te uploaden met een <br>
+			  niet toegestane bestandsextensie. De toegestane<br>
+			  bestandsextensies zijn:<br>
+			  <ul
+			   <li>.jpg</li>
+			   <li>.gif</li>
+			   <li>.png</li>
+			  </ul>
+			  U wordt doorgestuurd naar de uploadpagina.";			  		header("refresh:4;url=index.php?content=upload_form&user_id=".$_POST['user_id']."&order_id=".$_POST['order_id']);
 	}
 	else 
 	{
